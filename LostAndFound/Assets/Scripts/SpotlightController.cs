@@ -21,4 +21,16 @@ public class SpotlightController : MonoBehaviour
 
     }
 
+    void OnTriggerStay2D(Collider2D otherCollider)
+    {
+        if(otherCollider.tag == "Enemy")
+        {
+            Debug.Log("Spotted!");
+            Vector3 posDiff = otherCollider.transform.position - transform.position;
+            otherCollider.GetComponent<Enemy>().RunAway(posDiff.normalized);
+        }
+
+
+    }
+
 }
