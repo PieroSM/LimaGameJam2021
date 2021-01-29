@@ -54,15 +54,14 @@ public class Player : MonoBehaviour
         Vector2 screenPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
         Vector2 relDir = ((Vector3)worldPos - transform.position).normalized * lightRadius;
+
         float angle = Mathf.Atan2(relDir.y, relDir.x) * Mathf.Rad2Deg;
+        flashlight.transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
 
+        if (transform.localScale.x < 0)
+        {
+            relDir.x = -relDir.x;
+        }
         flashlight.transform.localPosition = relDir;
-
-        flashlight.transform.rotation = Quaternion.AngleAxis(angle-90f, Vector3.forward);
-
-        // Vector3 scale = transform.localScale;
-        
-        // // flashlight.transform.localScale = scale;
-
     }
 }
