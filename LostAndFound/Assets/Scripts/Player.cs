@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 4f;
+    [SerializeField] float lightRadius = 1f;
     Animator animator;
     Flashlight flashlight;
 
@@ -52,13 +53,16 @@ public class Player : MonoBehaviour
         //Transform from Screen coordinates (pixels) to World coordinates (units)
         Vector2 screenPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-        Vector2 relDir = ((Vector3)worldPos - transform.position).normalized;
+        Vector2 relDir = ((Vector3)worldPos - transform.position).normalized * lightRadius;
+        float angle = Mathf.Atan2(relDir.y, relDir.x) * Mathf.Rad2Deg;
 
         flashlight.transform.localPosition = relDir;
 
-        Vector3 scale = flashlight.transform.localScale;
+        flashlight.transform.rotation = Quaternion.AngleAxis(angle-90f, Vector3.forward);
+
+        // Vector3 scale = transform.localScale;
         
-        flashlight.transform.localScale = scale;
+        // // flashlight.transform.localScale = scale;
 
     }
 }
