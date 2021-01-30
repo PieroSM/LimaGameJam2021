@@ -29,10 +29,7 @@ public class DoorController : MonoBehaviour
             {
                 Debug.Log("Abrir puerta");
                 itemRequired.TakeItemsFromInventory(numberOfItemsToOpen);
-                //RotateDoor();
-                GetComponent<BoxCollider2D>().enabled = false;
                 GetComponent<CapsuleCollider2D>().enabled = false;
-
                 StartCoroutine(AnimateDoor());
             }
             else if (Input.GetKeyDown("e"))
@@ -44,29 +41,25 @@ public class DoorController : MonoBehaviour
 
     IEnumerator AnimateDoor()
     {
-        transform.parent.Rotate(Vector3.forward, -90f * Time.deltaTime);
-        Debug.Log(transform.parent.rotation.eulerAngles.z);
-        while (Mathf.Abs(transform.parent.rotation.eulerAngles.z) < 90f)
+        if (transform.parent.localScale.x < 0)
         {
-            Debug.Log(transform.parent.rotation.eulerAngles.z);
-
-            if (transform.parent.localScale.x < 0)
+            transform.parent.Rotate(Vector3.forward, -90f * Time.deltaTime);    
+            while (Mathf.Abs(transform.parent.rotation.eulerAngles.z) >= 270f)
             {
                 transform.parent.Rotate(Vector3.forward, -90f * Time.deltaTime);
+                yield return null;
             }
-            else if (transform.parent.localScale.x > 0)
+        }
+        else if (transform.parent.localScale.x > 0)
+        {
+            transform.parent.Rotate(Vector3.forward, 90f * Time.deltaTime);
+            while (Mathf.Abs(transform.parent.rotation.eulerAngles.z) < 90f)
             {
                 transform.parent.Rotate(Vector3.forward, 90f * Time.deltaTime);
+                yield return null;
             }
-            Debug.Log(transform.parent.rotation.eulerAngles.z);
-            yield return null;
         }
         
-    }
-
-    private void RotateDoor()
-    {
-        doorAnimator.enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
