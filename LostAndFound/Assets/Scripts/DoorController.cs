@@ -29,16 +29,39 @@ public class DoorController : MonoBehaviour
             {
                 Debug.Log("Abrir puerta");
                 itemRequired.TakeItemsFromInventory(numberOfItemsToOpen);
-                RotateDoor();
+                //RotateDoor();
                 GetComponent<BoxCollider2D>().enabled = false;
                 GetComponent<CapsuleCollider2D>().enabled = false;
 
+                StartCoroutine(AnimateDoor());
             }
             else if (Input.GetKeyDown("e"))
             {
                 Debug.Log("Faltan llaves");
             }
         }
+    }
+
+    IEnumerator AnimateDoor()
+    {
+        transform.parent.Rotate(Vector3.forward, -90f * Time.deltaTime);
+        Debug.Log(transform.parent.rotation.eulerAngles.z);
+        while (Mathf.Abs(transform.parent.rotation.eulerAngles.z) < 90f)
+        {
+            Debug.Log(transform.parent.rotation.eulerAngles.z);
+
+            if (transform.parent.localScale.x < 0)
+            {
+                transform.parent.Rotate(Vector3.forward, -90f * Time.deltaTime);
+            }
+            else if (transform.parent.localScale.x > 0)
+            {
+                transform.parent.Rotate(Vector3.forward, 90f * Time.deltaTime);
+            }
+            Debug.Log(transform.parent.rotation.eulerAngles.z);
+            yield return null;
+        }
+        
     }
 
     private void RotateDoor()
