@@ -57,7 +57,7 @@ public class EnemyActive : MonoBehaviour
         }
         if (other.GetComponent<Player>())
         {
-            touchingPlayer = true;
+            touchingPlayer = false;
         }
     }
 
