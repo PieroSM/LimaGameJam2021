@@ -45,7 +45,10 @@ public class ObjectController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        triggerCollision = false;
+        if(other.GetComponent<Player>())
+        {
+            triggerCollision = false;
+        }
     }
 
     public ItemDisplay GetItemDisplay()

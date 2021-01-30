@@ -11,12 +11,24 @@ public class ItemDisplay : MonoBehaviour
     void Start() 
     {
         itemText.text = numberOfItems.ToString();
+        if(numberOfItems==0)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
     
     public void AddItemsToInventory()
     {
         numberOfItems++;
         itemText.text = numberOfItems.ToString();
+        if(numberOfItems > 0)
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     public void TakeItemsFromInventory(int itemsTaken)
