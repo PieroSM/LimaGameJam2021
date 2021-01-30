@@ -27,23 +27,39 @@ public class DoorController : MonoBehaviour
         {
             if (Input.GetKeyDown("e") && itemRequired.GetNumberOfItems() >= numberOfItemsToOpen)
             {
-                Debug.Log("Abrir puerta");
+                // Debug.Log("Abrir puerta");
                 itemRequired.TakeItemsFromInventory(numberOfItemsToOpen);
-                RotateDoor();
-                GetComponent<BoxCollider2D>().enabled = false;
                 GetComponent<CapsuleCollider2D>().enabled = false;
-
+                StartCoroutine(AnimateDoor());
             }
             else if (Input.GetKeyDown("e"))
             {
-                Debug.Log("Faltan llaves");
+                // Debug.Log("Faltan llaves");
             }
         }
     }
 
-    private void RotateDoor()
+    IEnumerator AnimateDoor()
     {
-        doorAnimator.enabled = true;
+        if (transform.parent.localScale.x < 0)
+        {
+            transform.parent.Rotate(Vector3.forward, -90f * Time.deltaTime);    
+            while (Mathf.Abs(transform.parent.rotation.eulerAngles.z) >= 270f)
+            {
+                transform.parent.Rotate(Vector3.forward, -90f * Time.deltaTime);
+                yield return null;
+            }
+        }
+        else if (transform.parent.localScale.x > 0)
+        {
+            transform.parent.Rotate(Vector3.forward, 90f * Time.deltaTime);
+            while (Mathf.Abs(transform.parent.rotation.eulerAngles.z) < 90f)
+            {
+                transform.parent.Rotate(Vector3.forward, 90f * Time.deltaTime);
+                yield return null;
+            }
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
