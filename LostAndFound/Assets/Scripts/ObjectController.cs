@@ -10,7 +10,6 @@ public class ObjectController : MonoBehaviour
     CircleCollider2D objectCollider;
     [SerializeField] ItemDisplay itemDisplay;
 
-    int borrar=0;
     // Start is called before the first frame update
     void Start()
     {

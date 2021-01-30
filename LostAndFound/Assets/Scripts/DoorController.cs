@@ -27,14 +27,14 @@ public class DoorController : MonoBehaviour
         {
             if (Input.GetKeyDown("e") && itemRequired.GetNumberOfItems() >= numberOfItemsToOpen)
             {
-                Debug.Log("Abrir puerta");
+                // Debug.Log("Abrir puerta");
                 itemRequired.TakeItemsFromInventory(numberOfItemsToOpen);
                 GetComponent<CapsuleCollider2D>().enabled = false;
                 StartCoroutine(AnimateDoor());
             }
             else if (Input.GetKeyDown("e"))
             {
-                Debug.Log("Faltan llaves");
+                // Debug.Log("Faltan llaves");
             }
         }
     }

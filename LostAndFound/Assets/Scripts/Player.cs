@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             flashlight.Switch();
+            flashlight.GetComponent<Collider2D>().enabled = !flashlight.GetComponent<Collider2D>().enabled;
         }
     }
 }
