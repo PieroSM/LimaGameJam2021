@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     {
         Move();
         PointFlashlight();
+        SwitchFlashlight();
     }
 
     private void Move()
@@ -63,5 +64,13 @@ public class Player : MonoBehaviour
             relDir.x = -relDir.x;
         }
         flashlight.transform.localPosition = relDir;
+    }
+
+    private void SwitchFlashlight()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            flashlight.Switch();
+        }
     }
 }
