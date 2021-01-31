@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class DamageDealerTrap : MonoBehaviour
 {
-    [SerializeField] int damage = 5;
+    [SerializeField] int damage = 1;
     [SerializeField] float delayBetweenAttacks = 1f;
     [SerializeField] float offsetTrap;
     [SerializeField] float offsetPlayer;
-    bool playerWasTouched = false; 
+    [SerializeField] bool itsActiveEver = false;
+    Collider2D trapCollider;
+    SpriteRenderer trapSprite;
+    Animator animator;
+    bool playerWasTouched = false;
+    int contador = 0;
+    Coroutine dealDamage;
+
+    private void Start() 
+    {
+        animator = GetComponent<Animator>();
+        trapCollider = GetComponent<Collider2D>();
+        trapSprite = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update() 
+    {
+        if(!(itsActiveEver || contador < 1))
+        {
+            trapCollider.enabled = false;
+            trapSprite.color = new Color32(255,0,0,255);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.tag == "Player" && other.transform.position.y - offsetPlayer >= transform.position.y - offsetTrap)
+        if (other.tag == "Player" || other.tag == "Enemy")
         {
             GameObject otherGameObject = other.gameObject;
             playerWasTouched = true;
-            StartCoroutine(DealDamage(otherGameObject));
-        }
-        else if (other.tag == "Enemy" && other.transform.position.y >= transform.position.y - offsetTrap)
-        {
-            GameObject otherGameObject = other.gameObject;
-            playerWasTouched = true;
-            StartCoroutine(DealDamage(otherGameObject));
+            dealDamage = StartCoroutine(DealDamage(otherGameObject));
         }
     }
 
@@ -32,17 +48,23 @@ public class DamageDealerTrap : MonoBehaviour
         {
             GameObject otherGameObject = other.gameObject;
             playerWasTouched = false;
-            StopCoroutine(DealDamage(otherGameObject));
         }
     }
-
-    IEnumerator DealDamage(GameObject otherGameObject)
+    IEnumerator DealDamage(GameObject colliderObject)
     {
-        while(playerWasTouched && otherGameObject)
+        while(true)
         {
-            yield return new WaitForEndOfFrame();
-            otherGameObject.GetComponent<Health>().TakeDamage(damage);
-            yield return new WaitForSeconds(delayBetweenAttacks);
+            if (colliderObject)
+            {
+                if (animator.GetBool("IsActivated"))
+                {
+                    yield return new WaitForEndOfFrame();
+                    colliderObject.GetComponent<Health>().TakeDamage(damage);
+                    contador ++;
+                    yield return new WaitForSeconds(delayBetweenAttacks);
+                }
+            }  
+            yield return null;
         }
     }
 

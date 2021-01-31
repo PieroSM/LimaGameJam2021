@@ -43,7 +43,7 @@ public class EnemyPassive : MonoBehaviour
         // Debug.Log("Enemigo iluminado");
         enemyLighted = true;
         SwitchEnemyState(true);
-        if (other.GetComponent<Player>())
+        if (other.GetComponent<Player>() && !enemyLighted)
         {
             touchingPlayer = true;
         }
@@ -54,7 +54,7 @@ public class EnemyPassive : MonoBehaviour
     {
         // Debug.Log("Enemigo no iluminado");
         enemyLighted = false;
-        if (other.GetComponent<Player>())
+        if (other.GetComponent<Player>() && !enemyLighted)
         {
             touchingPlayer = false;
         }

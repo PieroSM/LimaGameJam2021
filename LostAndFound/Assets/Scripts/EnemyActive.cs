@@ -10,7 +10,7 @@ public class EnemyActive : MonoBehaviour
     [Tooltip("At this distance from the Player the enemy will sleep again.")]
     [SerializeField] float distanceToAwake = 20f;
     Player player;
-    bool enemyLighted = false;
+    [SerializeField] int numberOfLightsOnEnemy = 0;
     bool touchingPlayer = false;
 
     void Start() 
@@ -25,11 +25,11 @@ public class EnemyActive : MonoBehaviour
         {
             float distanceToPlayer = Vector2.Distance(gameObject.transform.position, player.transform.position);
         
-            if(enemyLighted == false && !touchingPlayer && distanceToPlayer <= distanceToAwake)
+            if(numberOfLightsOnEnemy == 0 && !touchingPlayer && distanceToPlayer <= distanceToAwake)
             {
                 Move();
             }
-            if (distanceToPlayer >= distanceToAwake && enemyLighted == true)
+            if (distanceToPlayer >= distanceToAwake && numberOfLightsOnEnemy > 0)
             {
                 SwitchEnemyState(false);
             }
@@ -68,7 +68,9 @@ public class EnemyActive : MonoBehaviour
     
     private void SwitchEnemyState(bool newState)
     {
-        enemyLighted = !newState;
+        if (!newState) { numberOfLightsOnEnemy ++; }
+        else           { numberOfLightsOnEnemy --; }
+
         GetComponent<Light2D>().enabled = newState;
     }
 }
