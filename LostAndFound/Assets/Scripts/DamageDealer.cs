@@ -32,7 +32,12 @@ public class DamageDealer : MonoBehaviour
     {
         while(playerWasTouched)
         {
-            otherGameObject.GetComponent<Health>().TakeDamage(damage);
+            Health otherHealth = otherGameObject.GetComponent<Health>();
+            otherHealth.TakeDamage(damage);
+            if (otherHealth.isDead)
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            }
             yield return new WaitForSeconds(delayBetweenAttacks);
         }
     }

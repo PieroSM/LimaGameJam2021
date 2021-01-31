@@ -11,12 +11,14 @@ public class DoorController : MonoBehaviour
     [SerializeField] Sprite openDoorSprite;
     [SerializeField] DoorController otherSideDoor;
     bool interactable = true;
+    Player player;
     // [SerializeField] GameObject Pivot;
     // [SerializeField] Animator doorAnimator;
 
     void Start()
     {
         // doorAnimator.enabled = false;
+
     }
 
 
@@ -27,9 +29,10 @@ public class DoorController : MonoBehaviour
 
     public void OpenDoor()
     {
-        if (triggerCollision)
+        if (triggerCollision && Input.GetKeyDown("e"))
         {
-            if (Input.GetKeyDown("e") && itemRequired.GetNumberOfItems() >= numberOfItemsToOpen)
+            player.AnimateUse();
+            if (itemRequired.GetNumberOfItems() >= numberOfItemsToOpen)
             {
                 HandleOpenningDoor();
                 if (otherSideDoor != null)
@@ -37,7 +40,7 @@ public class DoorController : MonoBehaviour
                     otherSideDoor.HandleOpenningDoor();
                 }
             }
-            else if (Input.GetKeyDown("e"))
+            else
             {
                 // Poner sonido de puerta que no se puede abrir aquí!
             }
@@ -63,6 +66,7 @@ public class DoorController : MonoBehaviour
     {
         if(other.GetComponent<Player>() && interactable)
         {
+            player = other.GetComponent<Player>();
             triggerCollision = true;
         }
     }
