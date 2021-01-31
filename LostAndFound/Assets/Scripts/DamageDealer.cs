@@ -6,7 +6,15 @@ public class DamageDealer : MonoBehaviour
 {
     [SerializeField] int damage = 5;
     [SerializeField] float delayBetweenAttacks = 1f;
+    [SerializeField] Player player;
+    Animator animator;
     bool playerWasTouched = false; 
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        player = FindObjectOfType<Player>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -14,7 +22,9 @@ public class DamageDealer : MonoBehaviour
         {
             GameObject otherGameObject = other.gameObject;
             playerWasTouched = true;
-            StartCoroutine(DealDamage(otherGameObject));
+            animator.SetBool("isAttacking", true);
+
+            // StartCoroutine(DealDamage(otherGameObject));
         }
     }
 
@@ -24,25 +34,13 @@ public class DamageDealer : MonoBehaviour
         {
             GameObject otherGameObject = other.gameObject;
             playerWasTouched = false;
-            StopCoroutine(DealDamage(otherGameObject));
+            animator.SetBool("isAttacking", false);
+            // StopCoroutine(DealDamage(otherGameObject));
         }
     }
 
-    IEnumerator DealDamage(GameObject otherGameObject)
+    public void Attack()
     {
-        while(playerWasTouched)
-        {
-            Health otherHealth = otherGameObject.GetComponent<Health>();
-            otherHealth.TakeDamage(damage);
-            if (otherHealth.isDead)
-            {
-                Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                }
-            }
-            yield return new WaitForSeconds(delayBetweenAttacks);
-        }
+        player.GetComponent<Health>().TakeDamage(damage);    
     }
 }

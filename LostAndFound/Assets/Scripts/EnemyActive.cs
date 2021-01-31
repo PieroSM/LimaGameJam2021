@@ -11,11 +11,14 @@ public class EnemyActive : MonoBehaviour
     [SerializeField] float distanceToAwake = 20f;
     Player player;
     [SerializeField] int numberOfLightsOnEnemy = 0;
+
+    Animator animator;
     bool touchingPlayer = false;
 
     void Start() 
     {
         player = FindObjectOfType<Player>();
+        animator = GetComponent<Animator>();
     }
 
     void Update() 
@@ -28,9 +31,15 @@ public class EnemyActive : MonoBehaviour
             {
                 Move();
             }
+            else
+            {
+                
+                animator.SetBool("isWalking", false);
+            }
             if (distanceToPlayer >= distanceToAwake && numberOfLightsOnEnemy > 0)
             {
-                SwitchEnemyState(false);
+                SwitchEnemyState(false);                
+                animator.SetBool("isWalking", false);
             }
         }
     }
@@ -62,6 +71,15 @@ public class EnemyActive : MonoBehaviour
 
     private void Move()
     {
+        animator.SetBool("isWalking", true);
+        if (transform.position.x-player.transform.position.x < 0 && transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+        if (transform.position.x-player.transform.position.x > 0 && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemySpeed * Time.deltaTime);
     }
     
