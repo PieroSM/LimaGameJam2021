@@ -42,12 +42,12 @@ TagManager:
   - name: Background
     uniqueID: 4258480689
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Obstacle
     uniqueID: 3480018889
     locked: 0
   - name: Foreground
     uniqueID: 2367842569
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

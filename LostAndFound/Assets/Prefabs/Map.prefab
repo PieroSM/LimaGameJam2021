@@ -120,7 +120,7 @@ MonoBehaviour:
   - {x: -0.085143104, y: -0.020070758, z: 0}
   m_ShapePathHash: -1770557921
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45810
+  m_InstanceId: -1426
 --- !u!114 &5442695148326177412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,8 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistanceToGrab: 0.35
-  itemDisplay: {fileID: 5505494349607038983, guid: e1d1c0d8b3b1a404189510db05bf3e36,
-    type: 3}
+  itemDisplay: {fileID: 0}
 --- !u!58 &5442695148326177415
 CircleCollider2D:
   m_ObjectHideFlags: 0
