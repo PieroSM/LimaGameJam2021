@@ -56,8 +56,7 @@ public class TrapController : MonoBehaviour
         GameObject colliderObject = other.gameObject;
         if(colliderObject.tag == "Player" || colliderObject.tag == "Enemy")
         {
-            StopCoroutine(animateTrap); 
-            Debug.Log(colliderObject.name);
+            StopCoroutine(animateTrap);
             animator.SetBool("IsActivated", false);
         }
     }

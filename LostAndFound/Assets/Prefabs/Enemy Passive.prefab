@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007c649ebdbca094b8bed526a4038754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 1
   delayBetweenAttacks: 1
 --- !u!50 &6307853457750140424
 Rigidbody2D:
@@ -270,4 +270,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d58ab73ec3bcd247a7aba95c43202b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 1
