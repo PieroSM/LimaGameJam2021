@@ -129,7 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 3
-  distanceToAwake: 15
+  distanceToAwake: 5
+  numberOfLightsOnEnemy: 0
 --- !u!114 &427297138332852762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,3 +272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  waitToDestroy: 2
+  secondsImmobile: 0.5
+  isDead: 0
