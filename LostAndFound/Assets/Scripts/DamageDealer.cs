@@ -36,7 +36,11 @@ public class DamageDealer : MonoBehaviour
             otherHealth.TakeDamage(damage);
             if (otherHealth.isDead)
             {
-                GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                }
             }
             yield return new WaitForSeconds(delayBetweenAttacks);
         }

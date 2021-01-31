@@ -15,10 +15,18 @@ public class DoorController : MonoBehaviour
     // [SerializeField] GameObject Pivot;
     // [SerializeField] Animator doorAnimator;
 
+    [SerializeField] AudioClip lockedSound;
+    [SerializeField] [Range(0, 1)] float volumeLocked = 0.8f;
+    [SerializeField] AudioClip unlockedSound;
+    [SerializeField] [Range(0, 1)] float volumeUnlocked = 0.8f;
+
+    AudioSource audioSource;
+    bool finishedAudio = true;
+
     void Start()
     {
         // doorAnimator.enabled = false;
-
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -34,6 +42,7 @@ public class DoorController : MonoBehaviour
             player.AnimateUse();
             if (itemRequired.GetNumberOfItems() >= numberOfItemsToOpen)
             {
+                PlayAudioWithWait(unlockedSound, volumeUnlocked);
                 HandleOpenningDoor();
                 if (otherSideDoor != null)
                 {
@@ -42,9 +51,25 @@ public class DoorController : MonoBehaviour
             }
             else
             {
-                // Poner sonido de puerta que no se puede abrir aquí!
+                PlayAudioWithWait(lockedSound, volumeLocked);
             }
         }
+    }
+
+    void PlayAudioWithWait(AudioClip clip, float volume)
+    {
+        if (finishedAudio)
+        {
+            finishedAudio = false;
+            StartCoroutine(ProcessAudio(clip, volume));
+        }
+    }
+
+    IEnumerator ProcessAudio(AudioClip clip, float volume)
+    {
+        audioSource.PlayOneShot(clip, volume);
+        yield return new WaitForSeconds(clip.length);
+        finishedAudio = true;
     }
 
     private void HandleOpenningDoor()
