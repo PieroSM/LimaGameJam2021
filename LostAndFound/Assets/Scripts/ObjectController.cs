@@ -10,6 +10,8 @@ public class ObjectController : MonoBehaviour
     CircleCollider2D objectCollider;
     [SerializeField] ItemDisplay itemDisplay;
 
+    Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class ObjectController : MonoBehaviour
         {
             if (Input.GetKeyDown("e"))
             {
+                player.AnimateUse();
                 itemDisplay.AddItemsToInventory();
                 Destroy(gameObject);
             }
@@ -38,6 +41,7 @@ public class ObjectController : MonoBehaviour
     {
         if(other.GetComponent<Player>())
         {
+            player = other.GetComponent<Player>();
             triggerCollision = true;
         }
     }

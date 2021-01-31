@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 270648138179550527}
   - component: {fileID: 103445629}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door Unlocked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6158742532485458769, guid: 202d7f8e6f26cb84ba764f445155e7ad,
+  m_Sprite: {fileID: -7682986993773836533, guid: 202d7f8e6f26cb84ba764f445155e7ad,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemRequired: {fileID: 0}
-  numberOfItemsToOpen: 1
+  numberOfItemsToOpen: 0
   openDoorSprite: {fileID: 7726049039496746226, guid: 202d7f8e6f26cb84ba764f445155e7ad,
     type: 3}
   otherSideDoor: {fileID: 0}
