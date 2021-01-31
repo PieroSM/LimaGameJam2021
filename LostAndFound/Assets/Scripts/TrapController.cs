@@ -6,8 +6,8 @@ public class TrapController : MonoBehaviour
 {
     Animator animator;
     DamageDealerTrap damageDealerTrap;
-    float offsetPlayer;
-    float offsetTrap;
+    float offsetPlayer = 1.35f;
+    float offsetTrap = 0.6f;
     Coroutine animateTrap;
     void Start()
     {

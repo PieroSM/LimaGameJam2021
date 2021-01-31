@@ -9,6 +9,7 @@ public class DoorController : MonoBehaviour
     [SerializeField] ItemDisplay itemRequired;
     [SerializeField] int numberOfItemsToOpen;
     [SerializeField] Sprite openDoorSprite;
+    [SerializeField] DoorController otherSideDoor;
     bool interactable = true;
     // [SerializeField] GameObject Pivot;
     // [SerializeField] Animator doorAnimator;
@@ -18,19 +19,23 @@ public class DoorController : MonoBehaviour
         // doorAnimator.enabled = false;
     }
 
-    
+
     void Update()
     {
         OpenDoor();
     }
 
-    private void OpenDoor()
+    public void OpenDoor()
     {
         if (triggerCollision)
         {
             if (Input.GetKeyDown("e") && itemRequired.GetNumberOfItems() >= numberOfItemsToOpen)
             {
                 HandleOpenningDoor();
+                if (otherSideDoor != null)
+                {
+                    otherSideDoor.HandleOpenningDoor();
+                }
             }
             else if (Input.GetKeyDown("e"))
             {
@@ -44,6 +49,7 @@ public class DoorController : MonoBehaviour
         itemRequired.TakeItemsFromInventory(numberOfItemsToOpen);
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<BoxCollider2D>().isTrigger = true;
+        GetComponent<DoorTeleport>().enabled = true;
         interactable = false;
         ChangeToOpenDoorSprite();
     }

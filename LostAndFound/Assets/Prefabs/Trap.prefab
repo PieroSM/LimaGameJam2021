@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1638933281973120287}
   - component: {fileID: 1638933281973117667}
   - component: {fileID: 1638933281973117666}
-  - component: {fileID: 1638933281078774500}
+  - component: {fileID: 1393615260}
   m_Layer: 0
   m_Name: Trap
   m_TagString: Untagged
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735fa94c0dcffab4daabb2a29d559abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1638933281078774500
+--- !u!114 &1393615260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,8 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1638933281973120286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 007c649ebdbca094b8bed526a4038754, type: 3}
+  m_Script: {fileID: 11500000, guid: fe2654f35b0ef59439275ec51b513413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
   delayBetweenAttacks: 1
+  offsetTrap: 1.35
+  offsetPlayer: 0.6

@@ -18,7 +18,7 @@ public class DoorTeleport : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" || collision.tag == "Enemy")
+        if ((collision.tag == "Player" || collision.tag == "Enemy") && this.enabled)
         {
             collision.transform.position = target.position;
         }
