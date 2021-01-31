@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -51,6 +52,10 @@ public class Health : MonoBehaviour
             player.canMove = false;
             player.canMovePriority = false;
             StartCoroutine(ProcessDeath());
+            Level level = FindObjectOfType<Level>();
+            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
+            //level.SetLastLevelIndex(SceneManager.GetActiveScene().buildIndex);
+            level.LoadGameOver();
         }
         else
         {

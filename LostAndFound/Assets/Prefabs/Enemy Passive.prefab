@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 2
   distanceToSleep: 10
-  awakeSound: {fileID: 8300000, guid: 6c9f55c2a5ec8bc4aa7a93e52e186c4b, type: 3}
+  awakeSound: {fileID: 8300000, guid: b468cc4878e31884b82e8c40340bce23, type: 3}
   volumeAwake: 1
   sleepSoundClose: {fileID: 8300000, guid: 0186395490c57f34a9de46322233b443, type: 3}
   volumeClose: 1

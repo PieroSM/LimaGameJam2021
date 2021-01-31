@@ -131,7 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 3
+<<<<<<< HEAD
   distanceToAwake: 15
+=======
+  distanceToAwake: 5
+>>>>>>> PieroPrueba
   numberOfLightsOnEnemy: 0
 --- !u!114 &427297138332852762
 MonoBehaviour:
@@ -278,6 +282,7 @@ MonoBehaviour:
   waitToDestroy: 2
   secondsImmobile: 0.5
   isDead: 0
+<<<<<<< HEAD
 --- !u!95 &1444997127
 Animator:
   serializedVersion: 3
@@ -297,3 +302,5 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+=======
+>>>>>>> PieroPrueba
