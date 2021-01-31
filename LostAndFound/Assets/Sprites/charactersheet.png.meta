@@ -395,7 +395,7 @@ TextureImporter:
       name: charactersheet (1)_9
       rect:
         serializedVersion: 2
-        x: 123
+        x: 127
         y: 336
         width: 123
         height: 168
@@ -479,7 +479,7 @@ TextureImporter:
       name: charactersheet (1)_13
       rect:
         serializedVersion: 2
-        x: 123
+        x: 126
         y: 168
         width: 123
         height: 168
@@ -500,7 +500,7 @@ TextureImporter:
       name: charactersheet (1)_14
       rect:
         serializedVersion: 2
-        x: 246
+        x: 249
         y: 168
         width: 123
         height: 168
@@ -521,7 +521,7 @@ TextureImporter:
       name: charactersheet (1)_15
       rect:
         serializedVersion: 2
-        x: 369
+        x: 372
         y: 168
         width: 123
         height: 168
@@ -606,7 +606,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 2
         width: 123
         height: 168
       alignment: 0
@@ -626,8 +626,8 @@ TextureImporter:
       name: charactersheet (1)_20
       rect:
         serializedVersion: 2
-        x: 123
-        y: 0
+        x: 124
+        y: 1
         width: 123
         height: 168
       alignment: 0
@@ -647,7 +647,7 @@ TextureImporter:
       name: charactersheet (1)_21
       rect:
         serializedVersion: 2
-        x: 246
+        x: 249
         y: 0
         width: 123
         height: 168
@@ -668,7 +668,7 @@ TextureImporter:
       name: charactersheet (1)_22
       rect:
         serializedVersion: 2
-        x: 369
+        x: 371
         y: 0
         width: 123
         height: 168
