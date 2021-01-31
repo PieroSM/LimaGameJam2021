@@ -28,14 +28,18 @@ public class EnemyPassive : MonoBehaviour
     [SerializeField] float distanceMedium = 50f;
     [SerializeField] float distanceClose = 20f;
     AudioSource audioSource;
+    Animator animator;
+    DamageDealer damageDealer;
     bool finishedAudio = true;
 
 
     void Start() 
     {
         GetComponent<Light2D>().enabled = false;
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
+        damageDealer = GetComponent<DamageDealer>();
     }
 
     void Update() 
@@ -50,6 +54,10 @@ public class EnemyPassive : MonoBehaviour
                 //audioSource.PlayOneShot(awakeSound);
                 PlayAudioWithWait(awakeSound, volumeAwake);
                 Move();
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
             }
             if (distanceToPlayer >= distanceToSleep && enemyLighted == false)
             {
@@ -97,7 +105,7 @@ public class EnemyPassive : MonoBehaviour
         SwitchEnemyState(true);
         if (other.GetComponent<Player>() && !enemyLighted)
         {
-            touchingPlayer = true;
+            touchingPlayer = true;            
         }
     }
 
@@ -114,6 +122,18 @@ public class EnemyPassive : MonoBehaviour
 
     private void Move()
     {
+        animator.SetBool("isWalking", true);
+        
+        if (transform.position.x-player.transform.position.x < 0 && transform.localScale.x > 0)
+        {
+            Debug.Log(transform.localScale);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            Debug.Log(transform.localScale);
+        }
+        if (transform.position.x-player.transform.position.x > 0 && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemySpeed * Time.deltaTime);
     }
     
