@@ -15,7 +15,6 @@ public class EnemyActive : MonoBehaviour
 
     void Start() 
     {
-        GetComponent<Light2D>().enabled = false;
         player = FindObjectOfType<Player>();
     }
 
@@ -70,7 +69,5 @@ public class EnemyActive : MonoBehaviour
     {
         if (!newState) { numberOfLightsOnEnemy ++; }
         else           { numberOfLightsOnEnemy --; }
-
-        GetComponent<Light2D>().enabled = newState;
     }
 }
