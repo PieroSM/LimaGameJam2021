@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,14 @@ public class DoorController : MonoBehaviour
     bool triggerCollision = false;
     [SerializeField] ItemDisplay itemRequired;
     [SerializeField] int numberOfItemsToOpen;
-    [SerializeField] GameObject Pivot;
-    [SerializeField] Animator doorAnimator;
+    [SerializeField] Sprite openDoorSprite;
+    bool interactable = true;
+    // [SerializeField] GameObject Pivot;
+    // [SerializeField] Animator doorAnimator;
 
     void Start()
     {
-        doorAnimator.enabled = false;
+        // doorAnimator.enabled = false;
     }
 
     
@@ -27,15 +30,42 @@ public class DoorController : MonoBehaviour
         {
             if (Input.GetKeyDown("e") && itemRequired.GetNumberOfItems() >= numberOfItemsToOpen)
             {
-                // Debug.Log("Abrir puerta");
-                itemRequired.TakeItemsFromInventory(numberOfItemsToOpen);
-                GetComponent<CapsuleCollider2D>().enabled = false;
-                StartCoroutine(AnimateDoor());
+                HandleOpenningDoor();
             }
             else if (Input.GetKeyDown("e"))
             {
-                // Debug.Log("Faltan llaves");
+                // Poner sonido de puerta que no se puede abrir aquí!
             }
+        }
+    }
+
+    private void HandleOpenningDoor()
+    {
+        itemRequired.TakeItemsFromInventory(numberOfItemsToOpen);
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().isTrigger = true;
+        interactable = false;
+        ChangeToOpenDoorSprite();
+    }
+
+    private void ChangeToOpenDoorSprite()
+    {
+        GetComponent<SpriteRenderer>().sprite = openDoorSprite;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.GetComponent<Player>() && interactable)
+        {
+            triggerCollision = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.GetComponent<Player>() && interactable)
+        {
+            triggerCollision = false;
         }
     }
 
@@ -60,22 +90,6 @@ public class DoorController : MonoBehaviour
             }
         }
         
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.GetComponent<Player>())
-        {
-            triggerCollision = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.GetComponent<Player>())
-        {
-            triggerCollision = false;
-        }
     }
 
 }
