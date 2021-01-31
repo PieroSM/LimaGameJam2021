@@ -7,8 +7,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 4f;
     [SerializeField] float lightRadius = 1f;
+    [SerializeField] float secondsUse = 0.3f;
     Animator animator;
     Flashlight flashlight;
+    public bool canMove = true;
+    public bool canMovePriority = true;
 
     void Start()
     {
@@ -18,8 +21,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if (canMove && canMovePriority)
+        {
+            Move();
+        }
         PointFlashlight();
+        SwitchFlashlight();
     }
 
     private void Move()
@@ -63,5 +70,30 @@ public class Player : MonoBehaviour
             relDir.x = -relDir.x;
         }
         flashlight.transform.localPosition = relDir;
+    }
+
+    private void SwitchFlashlight()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            flashlight.Switch();
+            flashlight.GetComponent<Collider2D>().enabled = !flashlight.GetComponent<Collider2D>().enabled;
+        }
+    }
+
+    public void AnimateUse()
+    {
+        canMove = false;
+        animator.SetTrigger("IsUsing");
+        StartCoroutine(ProcessUse());
+    }
+
+    IEnumerator ProcessUse()
+    {
+        yield return new WaitForSeconds(secondsUse);
+        if (canMovePriority)
+        {
+            canMove = true;
+        }
     }
 }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Canvas
+  - Heart
   layers:
   - Default
   - TransparentFX
@@ -14,9 +16,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Wall
+  - Player
+  - Background
   - 
   - 
   - 
@@ -42,12 +44,12 @@ TagManager:
   - name: Background
     uniqueID: 4258480689
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Obstacle
     uniqueID: 3480018889
     locked: 0
   - name: Foreground
     uniqueID: 2367842569
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
