@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 7604079736534326280}
   - component: {fileID: 7604079736534326283}
   - component: {fileID: 7604079736534326282}
+  - component: {fileID: 7604079736534326277}
   - component: {fileID: 7604079736534326276}
   - component: {fileID: 7604079736534326279}
   - component: {fileID: 7604079736534326274}
-  - component: {fileID: 7604079736534326277}
   - component: {fileID: 7604079736534326275}
   - component: {fileID: 7604079736534326272}
+  - component: {fileID: 3627831928477601350}
   m_Layer: 0
   m_Name: EnemyActive
   m_TagString: Untagged
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 3
-  distanceToAwake: 5
+  distanceToAwake: 7
   numberOfLightsOnEnemy: 0
 --- !u!114 &7604079736534326282
 MonoBehaviour:
@@ -174,6 +175,32 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!61 &7604079736534326277
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604079736534326285}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 2.86}
+    newSize: {x: 3, y: 2.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &7604079736534326276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,32 +256,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &7604079736534326277
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7604079736534326285}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 2.86}
-    newSize: {x: 3, y: 2.86}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &7604079736534326275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,3 +368,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3627831928477601350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604079736534326285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 3142d3fdc9df6ccf0969228d00000000
+  m_ShapePath:
+  - {x: -0.33748627, y: -0.45967865, z: 0}
+  - {x: 0.39752197, y: -0.6909561, z: 0.00000023841858}
+  - {x: 0.52877045, y: -0.31594086, z: 0.00000023841858}
+  - {x: 0.6140976, y: -0.76434326, z: 0}
+  - {x: 1.0116882, y: -0.9206085, z: 0.00000023841858}
+  - {x: 0.847641, y: -0.6627884, z: 0.00000023841858}
+  - {x: 0.8897476, y: -0.37690735, z: 0.00000023841858}
+  - {x: 0.50066376, y: 0.20436096, z: 0.00000023841858}
+  - {x: 0.069381714, y: 0.20905304, z: 0.00000023841858}
+  - {x: -0.09313965, y: 0.48973083, z: -0.00000071525574}
+  - {x: -0.43217468, y: 0.66373444, z: 0.00000023841858}
+  - {x: -0.4305954, y: 0.9818573, z: -0.00000071525574}
+  - {x: -0.623497, y: 1.2612, z: 0}
+  - {x: -0.9328537, y: 1.1299591, z: 0}
+  - {x: -1.0276031, y: 0.6168289, z: 0.00000023841858}
+  - {x: -1.0790634, y: -0.0956192, z: 0.00000023841858}
+  - {x: -0.6696243, y: -1.1413116, z: -0.00000071525574}
+  m_ShapePathHash: 1733580831
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -83254

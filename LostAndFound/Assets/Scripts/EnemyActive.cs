@@ -23,6 +23,7 @@ public class EnemyActive : MonoBehaviour
 
     void Update() 
     {
+        Debug.Log(numberOfLightsOnEnemy);
         if(player)
         {
             float distanceToPlayer = Vector2.Distance(gameObject.transform.position, player.transform.position);
