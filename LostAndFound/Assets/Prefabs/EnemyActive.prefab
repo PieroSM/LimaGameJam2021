@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LightType: 3
+  m_LightType: 1
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 0.2
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 3142d3fdc9df6ccf0969228d00000000
   m_LightCookieSprite: {fileID: 0}
@@ -171,10 +171,21 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
+  - {x: -0.779747, y: -1.0914574, z: 0}
+  - {x: -0.56534195, y: -1.0431623, z: -0.00000071525574}
+  - {x: 0.42575073, y: -1.2190008, z: -0.00000071525574}
+  - {x: 0.73178864, y: -1.0115309, z: 0}
+  - {x: 0.35381317, y: 0.067819595, z: -0.00000071525574}
+  - {x: -0.21934128, y: 0.49200726, z: 0}
+  - {x: -0.46143723, y: 0.8910656, z: -0.00000071525574}
+  - {x: -0.82770157, y: 1.0594864, z: 0}
+  - {x: -1.2047577, y: 1.0109549, z: -0.00000071525574}
+  - {x: -1.3326416, y: 0.61132145, z: -0.00000071525574}
+  - {x: -1.4525299, y: 0.3475628, z: -0.00000071525574}
+  - {x: -1.4365463, y: -0.012106895, z: -0.00000071525574}
+  - {x: -1.5564346, y: -0.61155796, z: -0.00000071525574}
+  - {x: -1.260704, y: -1.1790371, z: -0.00000071525574}
+  - {x: -1.1088448, y: -1.0991106, z: -0.00000071525574}
 --- !u!61 &7604079736534326277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -406,4 +417,4 @@ MonoBehaviour:
   - {x: -0.6696243, y: -1.1413116, z: -0.00000071525574}
   m_ShapePathHash: 1733580831
   m_Mesh: {fileID: 0}
-  m_InstanceId: -83254
+  m_InstanceId: -113068
